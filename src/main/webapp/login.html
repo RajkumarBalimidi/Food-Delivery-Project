@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants Login Page</title>
+
+<style>
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+}
+img{
+    float: left;
+    height: 100%;
+    width: 50%;
+    height: 600px;
+}
+
+
+.intro{
+   float: right;
+   padding-right: 80px;
+   margin-top: 40px;
+   flex-shrink: 1;
+   flex-grow: 1;
+
+}
+.intro h1{
+    color: rgb(192, 0, 206); 
+    padding-right: 40px;
+}
+
+.container {
+  margin-right: 120px;
+  margin-top: 30px;
+  float: right;
+  border: 1.5px solid rgb(38, 37, 37);
+  border-radius: 5px;
+  height: 350px;
+  width:350px;
+  background-color: white;
+  color: black;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+.container h2{
+    padding: 40px 40px 30px 40px;
+    color: rgba(2, 37, 232, 0.907);
+    background-color: white;
+  
+}
+.container input,label{
+    height: 35px;
+    width: 230px;
+    margin-left: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+.container input[placeholder]{
+    padding-left: 20px;
+}
+.container input,a{
+    background-color: white;
+}
+
+.container .button{
+    height: 35px;
+    width: 230px;
+    margin-left: 50px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: medium;
+    background-color: rgb(4, 27, 233);
+    color: white;
+    
+}
+.container .create{
+    
+    padding-left: 3px;
+    text-decoration: none;
+    color: rgba(14, 4, 194, 0.95);
+    background-color: white;
+}
+.container .notreg{
+    margin-left :40px;
+    font-size: 14px;
+}
+.container .forgot{
+    color: blue;
+    font-size: 14px;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+<body> 
+        <img class="image" src="https://wallpaperaccess.com/full/3014622.jpg" alt="Image not Found" >
+        <div class="intro">
+            <h1>Welcome to the Restaurants</h1><br>
+        </div>  
+        <form action="LoginPage" method="post">
+            <div class="container">
+                <h2>Welcome to Login Page</h2><br>
+                <input type="email" name="email" placeholder="Username" required><br><br>
+                <input type="password" name="password" placeholder="Password" required><br><br>
+                <input class="button" type="submit" value="Login"><br><br>
+                <a class="forgot" href="forgot.html">Forgot Password</a>
+        
+                <label class="notreg">Not Registered ?</label><a href="register.html" class="create">create account</a>
+            </div>  
+        
+        </form>
+</body>
+</html>

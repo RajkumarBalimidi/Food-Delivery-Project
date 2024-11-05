@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>App Main Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Menubar Styles */
+.menubar {
+    background-color: #a9a9a9; /* Cement color */
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.menubar img {
+    height: 40px; /* Adjust height of logo */
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.menubar h1 {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+    flex: 1; /* Allow the h1 to take available space */
+}
+
+/* Link Styles */
+.menubar a {
+    color: black;
+    text-decoration: none;
+    margin-left: 35px; /* Space between links */
+    font-weight: bold;
+}
+
+/* Container for Links on the Right */
+.menubar .login-links {
+    display: flex;
+    align-items: center;
+    margin-right:30px;
+}
+
+.menubar .separator {
+    margin: 0px; /* Space around the separator */
+    color: #333; /* Dark text color for separator */
+}
+
+.menubar .login-links a {
+    margin: 8px; /* Remove margin for auth links */
+}
+.menubar .login-links #login{
+	margin-left: 35px;
+}
+
+
+.menubar a:hover {
+	color: blue;
+}
+/* Content Styles */
+.content {
+    margin-top: 50px; /* Space for the fixed menubar */
+    padding: 0px;
+    margin-bottom: 80px;
+}
+
+/* Content Images Styling */
+.content-images {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-images img {
+    min-width: 90%;
+    height: 500px; /* Height set to 40% */
+    transition: transform 1s ease;
+    margin-left:20px;
+}
+
+/* Paragraph Styles */
+.content .p {
+    color: black; /* Set text color to black for better visibility */
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 800px;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+/* Social Icons Styles */
+.social-icons {
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+}
+
+.social-icons i {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.social-icons i:hover {
+    color: #a9a9a9; /* Cement color hover effect */
+}
+
+
+</style>
+</head>
+<body>
+    <div class="menubar">
+        <img src="https://static.vecteezy.com/system/resources/previews/018/867/174/non_2x/chili-pepper-on-fire-free-png.png" alt="Image Not Found">
+        <h1>Food Delivery App</h1>
+        <a href="home.jsp">Home</a>
+        <a href="contactUs.html">Contact Us</a>
+        <div class="login-links">
+            <a href="login.html" id="login">Login</a>
+            <p class="separator">/</p>
+            <a href="register.html" id="signup">Signup</a>
+        </div>
+    </div>
+    <br>
+    <div class="content">
+        <div class="content-images">
+            <img src="https://aws.wideinfo.org/sunskyview.com/wp-content/uploads/2022/07/20122322/Moist-Chicken-Burgers.jpg" alt="Image Not Found">
+            <img src="https://images7.alphacoders.com/350/350913.jpg" alt="Image Not Found">
+            <img src="https://cdn.tasteatlas.com/images/social/733cd5be69a84534b648fca6ef98b2a2.jpg" alt="Image Not Found">
+            <img src="https://www.simplyrecipes.com/thmb/jCOyYL1TLII2c5jyqrOEJxt8IBU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simple-Recipes-Egg-Masala-Curry-Lead-06-1225dad91b8b4531bdc0195fea8fa774.jpg" alt="Image Not Found">
+            <img src="https://connect.healthkart.com/wp-content/uploads/2022/10/900x500_banner_HK-Connect_gobi-recipes-dry.png" alt="Image Not Found">
+            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/hakka-noodles-recipe.jpg" alt="Image Not Found">
+        </div>
+        <div class="p">
+        
+            A food delivery app is a mobile or web application that allows users to browse, order, and pay for food from local restaurants or other food providers. The app streamlines the process of food ordering, making it convenient for customers to enjoy a variety of cuisines delivered directly to their doorstep.
+            <h2>1. User Registration and Profile Creation</h2>
+            Users sign up using their email, phone number, or social media accounts.
+            A profile is created with basic information such as address, payment methods, and order preferences.
+            <h2>2. Restaurant and Food Menu Browsing</h2>
+            Users can search for nearby restaurants or specific types of cuisine.
+            Restaurants list their full menus with prices, descriptions, and sometimes photos of the dishes.
+            <h2>3. Placing an Order</h2>
+            Users add items to their cart and customize orders, such as adding extra toppings, selecting portion sizes, or specifying dietary preferences.
+            Once the order is finalized, they proceed to checkout.
+            <h2>4. Payment and Discounts</h2>
+            Payment can be made using various methods, including credit/debit cards, mobile wallets, or cash on delivery (where available).
+            Many apps offer discounts, promo codes, and loyalty points.
+            <h2>5. Order Processing and Preparation</h2>
+            The order is sent to the selected restaurant, which confirms and begins preparing the meal.
+            Users can usually track the progress (e.g., order received, food being prepared).
+            <h2>6. Delivery Partner Assignment and Tracking</h2>
+            Once the food is ready, the app assigns a delivery driver to pick up and deliver the order.
+            Users can track the driver in real time on a map, including estimated arrival times.
+            <h2>7. Order Delivery and Rating</h2>
+            The delivery driver brings the order to the specified address.
+            After receiving the order, users can rate the restaurant, delivery experience, and give feedback.
+            <h2>8. Customer Support</h2>
+            Many apps provide in-app support for any issues, such as incorrect orders, delayed deliveries, or payment problems.
+            Benefits of a Food Delivery App
+            Convenience: Users can order from multiple restaurants in one place.
+            Time-saving: Fast access to meals without cooking or dining out.
+            Variety: Access to a wide range of cuisines and dishes.
+            Examples of Popular Food Delivery Apps
+            Uber Eats, DoorDash, Grubhub, Zomato, Swiggy
+            Food delivery apps have revolutionized the food industry, creating a digital ecosystem that connects customers, restaurants, and drivers seamlessly.
+        </div>
+        <br>
+        
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+    </div>
+
+    <script>
+ 
+        const imagesContainer = document.querySelector('.content-images');
+        const images = document.querySelectorAll('.content-images img');
+        let currentIndex = 0;
+		
+        function scrollImages() {
+            // Reset the translation of all images
+         
+            images.forEach((img, index) => {
+                img.style.transform = `translateX(-${currentIndex * 100}%)`;
+            });
+
+            // Move to the next image index
+            currentIndex = (currentIndex + 1) % images.length;
+            
+        }
+        
+        // Set interval to scroll images every 3 seconds
+       
+        setInterval(scrollImages, 3000);
+        
+       
+    </script>
+</body>
+</html>
