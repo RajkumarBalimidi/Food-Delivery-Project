@@ -20,6 +20,6 @@ public interface UserDAO {
 	
 	int updateUserPasswordByEmail(String email, String password);
 	
-	int updateUserDetails(String name, String address, String role, String email);
+	int updateUserDetails(String address, String role, String email);
 	
 }

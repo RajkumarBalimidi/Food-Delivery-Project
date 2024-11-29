@@ -29,10 +29,9 @@ public class EditMenuById extends HttpServlet {
 		int menuId = (int) session.getAttribute("menuId");
 		
 		MenuDAO mdao = new MenuDAOImpl();
-		Menu menu = new Menu(menuId, name, price, description, isavailable);
-		Menu update = mdao.updateMenuById(menu);
+		int update = mdao.updateMenuById(name, price, description, isavailable, menuId);
 		
-		if(update != null)
+		if(update != 0)
 		{
 			resp.sendRedirect("viewMenuAdmin.jsp");
 		}

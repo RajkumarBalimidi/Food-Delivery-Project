@@ -32,7 +32,7 @@
         gap: 20px;
         margin-top: 20px;
         width: 100%;
-        margin-left:100px;
+        margin-left:150px;
     }
     .card {
         background-color: #ffffff;
@@ -43,6 +43,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
         transition: transform 0.2s; /* Transition for hover effect */
+        margin-right:40px;
         
     }
     
@@ -112,9 +113,9 @@ if(menuList != null) {
     for(Menu m : menuList) {
 %>
         <div class="card">
+            <img src="<%= m.getItemImage() %>" alt="Image Not Found" height="150px" width="250px">
         	<h5>ID : <%=m.getMenu_id() %></h5>
             <h4>Item Name : <%= m.getMenu_name() %></h4>
-            <img alt="Image Not Found" src="" height="120px" width="180px">
             <p class="price">₹<%= m.getPrice() %></p>
             <p class="availability"><%= m.getIsavailable() ? "Available" : "Not Available" %></p>
             <p><%= m.getDescription() %></p>

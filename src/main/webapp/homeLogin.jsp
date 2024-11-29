@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+	
 	<style>
 	
 	@charset "UTF-8";
@@ -19,7 +19,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: orange;
+    background-color: #ffff;
 }
 
 .menubar {
@@ -164,7 +164,7 @@ h2 {
         for (Restaurant r : restaurant) {
     %>
         <div class="card">
-        	<img src="" height="200px" width="300px"><br><br>
+        	<img src="<%= r.getResImage() %>" height="200px" width="300px"><br><br>
             <b>Restaurant ID :</b> <%= r.getResid() %><br>
             <b>Name :</b> <%= r.getResname() %><br>
             <b>Address :</b> <%= r.getAddress() %><br>

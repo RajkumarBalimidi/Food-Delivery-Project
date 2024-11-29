@@ -41,7 +41,7 @@
         label {
             display: block;
             margin-bottom: 2px;
-            color: #555;
+            color: black;
             margin-left:30px;
             font-weight: bold;
         }
@@ -54,6 +54,9 @@
             margin-left:30px;
             margin-bottom:15px;
         }
+         input[type="file"] {
+         	margin-left: 30px;
+         }
 
         input[type="submit"] {
             background-color: blue;
@@ -79,7 +82,8 @@
 	<%restaurant = (Restaurant) session.getAttribute("restaurant");
 //	RestaurantId =(int) session.getAttribute("RestaurantId");
 	%>
-	<form action="ChangeRestaurantDetails">
+	<form action="ChangeRestaurantDetails" method="post" enctype="multipart/form-data">
+
 	<div>
 		<h2><%= restaurant.getResname() %> Details</h2>
 		
@@ -97,8 +101,6 @@
 		<input type="text" name="cuisinetype" value="<%= restaurant.getCuisinetype()%>"><br>
 		<label>Restaurant Admin Email ID : </label>
 		<input type="text" name="adminid" value="<%= restaurant.getAdminid()%>" readonly><br>
-		
-		<input type="file" name="resimage"><br><br>
 		
 		<input type="submit" value="update">
 	</div>

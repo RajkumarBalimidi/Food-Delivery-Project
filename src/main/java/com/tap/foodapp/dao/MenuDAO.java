@@ -14,7 +14,7 @@ public interface MenuDAO {
 	
 	int deleteMenuById(int id);
 	
-	Menu updateMenuById(Menu menu);
+	int updateMenuById(String menuName, float price, String description, boolean isAvailable, int menuId);
 	
 	List<Menu> getMenuByRestaurantId(int restaurantId);
 	

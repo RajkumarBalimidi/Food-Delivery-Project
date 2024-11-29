@@ -8,9 +8,16 @@ public class Menu {
 	private Float price;
 	private String description;
 	private Boolean isavailable;
+	private String itemImage;
 	
 	
 	
+	public String getItemImage() {
+		return itemImage;
+	}
+	public void setItemImage(String itemImage) {
+		this.itemImage = itemImage;
+	}
 	public int getMenu_id() {
 		return menu_id;
 	}
@@ -51,7 +58,7 @@ public class Menu {
 	
 	
 	
-	public Menu(int menu_id, int restaurant_id, String menu_name, Float price, String description, Boolean isavailable) {
+	public Menu(int menu_id, int restaurant_id, String menu_name, Float price, String description, Boolean isavailable, String itemImage) {
 		super();
 		this.menu_id = menu_id;
 		this.restaurant_id = restaurant_id;
@@ -59,15 +66,17 @@ public class Menu {
 		this.price = price;
 		this.description = description;
 		this.isavailable = isavailable;
+		this.itemImage = itemImage;
 	}
 	
-	public Menu(int menu_id, String menu_name, Float price, String description, Boolean isavailable) {
+	public Menu(int menu_id, String menu_name, Float price, String description, Boolean isavailable, String itemImage) {
 		super();
 		this.menu_id = menu_id;
 		this.menu_name = menu_name;
 		this.price = price;
 		this.description = description;
 		this.isavailable = isavailable;
+		this.itemImage = itemImage;
 	}
 	
 	public Menu(String menu_name1,int restaurant_id1, Float price1, String description1, Boolean isavailable1)

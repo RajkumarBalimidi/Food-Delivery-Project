@@ -36,7 +36,7 @@ public class MenuDAOImpl implements MenuDAO {
 	private static final String GET_ALL_MENUS = "select * from menu";
 	private static final String GET_MENU_BY_ID = "select * from menu where menu_id=?";
 	private static final String DELETE_MENU_BY_ID = "delete from menu where menu_id=?";
-	private static final String UPDATE_PRICE = "update menu set menu_name=?, price=?, description=?, isavaiable=? where menu_id=?";
+	private static final String UPDATE_PRICE = "update menu set `menu_name`=?, `price`=?, `description`=?, `isavaiable`=? where `menu_id`=?";
 	private static final String GET_MENU_BY_RESTAURANT_ID = "select * from `menu` where `restaurant_id`=?";
 	
 	@Override
@@ -79,7 +79,7 @@ public class MenuDAOImpl implements MenuDAO {
 			result = pstmt.executeQuery();
 			if(result.next())
 			{
-				menu = new Menu(result.getInt(1),result.getInt(2),result.getString(3),result.getFloat(4),result.getString(5),result.getBoolean(6));
+				menu = new Menu(result.getInt(1),result.getInt(2),result.getString(3),result.getFloat(4),result.getString(5),result.getBoolean(6),result.getString(7));
 			}
 		}
 		catch(Exception e)
@@ -104,21 +104,21 @@ public class MenuDAOImpl implements MenuDAO {
 	}
 
 	@Override
-	public Menu updateMenuById(Menu menu) {
+	public int updateMenuById(String menuName, float price, String description, boolean isAvailable, int menuId) {
 		try {
 			pstmt = con.prepareStatement(UPDATE_PRICE);
-			pstmt.setString(1, menu.getMenu_name() );
-			pstmt.setFloat(2, menu.getPrice());
-			pstmt.setString(3, menu.getDescription());
-			pstmt.setBoolean(4, menu.getIsavailable());
-			pstmt.setInt(5, menu.getMenu_id());
+			pstmt.setString(1, menuName);
+			pstmt.setFloat(2, price);
+			pstmt.setString(3, description);
+			pstmt.setBoolean(4, isAvailable);
+			pstmt.setInt(5, menuId);
 			res = pstmt.executeUpdate();
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		return menu;
+		return res;
 	}
 	
 	public static List<Menu> extractgetAllMenus(ResultSet result){
@@ -126,7 +126,7 @@ public class MenuDAOImpl implements MenuDAO {
 		try {
 			while(result.next())
 			{
-				menuList.add(new Menu(result.getInt(1),result.getInt(2),result.getString(3),result.getFloat(4),result.getString(5),result.getBoolean(6)));
+				menuList.add(new Menu(result.getInt(1),result.getInt(2),result.getString(3),result.getFloat(4),result.getString(5),result.getBoolean(6),result.getString(7)));
 			}
 		}
 		catch(Exception e)
@@ -148,7 +148,7 @@ public class MenuDAOImpl implements MenuDAO {
 			menuList.clear();
 			while(result.next())
 			{
-				menuList.add(new Menu(result.getInt("menu_id"),result.getString("menu_name"),result.getFloat("price"),result.getString("description"),result.getBoolean("isavaiable")));				
+				menuList.add(new Menu(result.getInt("menu_id"),result.getString("menu_name"),result.getFloat("price"),result.getString("description"),result.getBoolean("isavaiable"),result.getString("image_path")));				
 			}
 		}
 		catch(Exception e)

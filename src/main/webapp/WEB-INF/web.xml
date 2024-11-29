@@ -294,5 +294,25 @@
     <servlet-name>PlaceOrder</servlet-name>
     <url-pattern>/PlaceOrder</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>PutToCartByMenuId</display-name>
+    <servlet-name>PutToCartByMenuId</servlet-name>
+    <servlet-class>com.tap.foodapp.login.PutToCartByMenuId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PutToCartByMenuId</servlet-name>
+    <url-pattern>/PutToCartByMenuId</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveCartItem</display-name>
+    <servlet-name>RemoveCartItem</servlet-name>
+    <servlet-class>com.tap.foodapp.login.RemoveCartItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveCartItem</servlet-name>
+    <url-pattern>/RemoveCartItem</url-pattern>
+  </servlet-mapping>
+ 
 </web-app>

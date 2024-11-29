@@ -23,19 +23,18 @@ public class UpdateProfile extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//For Login Page
-		String name = req.getParameter("name");
+	
 		String email = req.getParameter("email");
 		String address = req.getParameter("address");
 		String role = req.getParameter("role");
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("email", email);
-		session.setAttribute("name", name);
 		session.setAttribute("address", address);
 		session.setAttribute("role", role);
 		
 		UserDAO udao = new UserDAOImpl();
-		update = udao.updateUserDetails(name, address, role, email);
+		update = udao.updateUserDetails(address, role, email);
 		
 		user = udao.getUserByEmail(email);
 		session.setAttribute("user", user);

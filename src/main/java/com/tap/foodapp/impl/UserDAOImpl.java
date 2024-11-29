@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
 	private static final String DELETE_USER_BY_EMAIL = "delete from users where email=?";
 	private static final String UPADATE_USER_ADDRESS = "update users set address=? where email=?";
 	private static final String UPDATE_USER_PASSWORD = "update users set password=? where email=?";
-	private static final String UPDATE_USER_DETAILS = "update users set name=?,address=?,role=? where email=?";
+	private static final String UPDATE_USER_DETAILS = "update users set address=?,role=? where email=?";
 	
 	
 	static ArrayList<User> userList = new ArrayList<User>();
@@ -170,14 +170,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int updateUserDetails(String name, String address, String role, String email) {
+	public int updateUserDetails(String address, String role, String email) {
 
 		try {
 			pstmt = con.prepareStatement(UPDATE_USER_DETAILS);
-			pstmt.setString(1, name);
-			pstmt.setString(2, address);
-			pstmt.setString(3, role);
-			pstmt.setString(4, email);
+			pstmt.setString(1, address);
+			pstmt.setString(2, role);
+			pstmt.setString(3, email);
 			res = pstmt.executeUpdate();
 //			pstmt = con.prepareStatement(GET_USER_BY_EMAIL);
 //			pstmt.setString(1, email);

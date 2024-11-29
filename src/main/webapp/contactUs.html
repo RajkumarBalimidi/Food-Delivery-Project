@@ -17,6 +17,87 @@ body {
     background-color: #f4f4f9;
 }
 
+.menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #12ccf6; /* Light yellow background */
+    padding: 5px 0px; /* Padding around the items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    height: 45px;
+     position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.menubar img {
+    height: 40px; /* Adjust height of logo */
+    width: 40px;
+    border-radius: 20px;
+    background-color: none;
+}
+
+.menubar h2 {
+    margin: 0;
+    color: #333; /* Dark text color */
+}
+
+.menubar a {
+    color: #333; /* Dark text color for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold font for links */
+}
+
+.menubar .auth-links {
+    display: flex; /* Flexbox for login and signup links */
+    margin-left: 100px;
+    margin-right:50px;
+}
+
+.menubar .auth-links a {
+	padding-left: 20px;
+    margin: 0; /* Remove margin for auth links */
+}
+
+.menubar .separator {
+    margin: 0 5px; /* Space around the separator */
+    color: #333; /* Dark text color for separator */
+}
+
+.menubar #profile {
+    padding-top: 0px;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 38px;
+    background-color: white;
+
+}
+.menubar .hc1{
+	font-size:15px;
+	margin-left: 20px;
+}
+
+.menubar .hc{
+	font-size:16px;
+}
+
+.menubar a:hover {
+    color: red; /* Change color on hover */
+}
+.menubar #logout{
+	margin-right: 20px;
+}
+
+.menubar #logout:hover{
+	transition: 0.2s;
+	font-size: 13px;
+}
+
+
+/* After menu bar page style*/
+
+
 /* Container styling */
 .container {
     width: 100%;
@@ -29,7 +110,7 @@ body {
 }
 
 /* Image styling */
-img {
+.container img {
     width: 100%;
     height: 500px;
     object-fit: cover;
@@ -38,7 +119,7 @@ img {
 }
 
 /* Label styling */
-label {
+.container label {
     font-weight: bold;
     margin-top: 15px;
     display: block;
@@ -46,7 +127,7 @@ label {
 }
 
 /* Input field styling */
-.name,
+.container .name,
 input[type="email"],
 textarea {
     width: 100%;
@@ -59,13 +140,13 @@ textarea {
 }
 
 /* Textarea styling */
-textarea {
+.container textarea {
     height: 150px;
     resize: vertical; /* Allows vertical resizing only */
 }
 
 /* Submit button styling */
-input[type="submit"] {
+.container input[type="submit"] {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -77,23 +158,34 @@ input[type="submit"] {
     margin-top: 15px;
 }
 
-input[type="submit"]:hover {
+.container input[type="submit"]:hover {
     background-color: #45a049;
 }
 
 </style>
 </head>
 <body>
-		<div class="container">
-			<img src="https://lynchlaw-group.com/wp-content/uploads/2017/05/sh8-5453-871.jpg" alt="Image Not Found">
-			<label>Name :</label>
-			<input type="text" class="name" name="name" placeholder="Name" required><br>
-			<label>Email :</label>
-			<input type="email" name="email" placeholder="Email" required><br>
-			<label>Queries (or) Suggestions :</label>
-			<textarea cols="102" rows="10" name="queries" placeholder="Queries (or) Suggestions" required></textarea><br>
+
+	<div class="menubar">
+        <a href="homeUser.jsp" class="hc1">Home</a>
+        <h2>Contact Us</h2>
+        <a href="addToCart.jsp?userEmail=<%= userId%>"><img src="https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-cart-icon-png-image_4292658.jpg" alt="Cart Not Found"></a>
+        <a href="orderHistory.jsp?userEmail=<%= userId %>" style="text-decoration : none">Order History</a>
+        <a href="profile.jsp" id="profile"><img src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png" alt="Image Not Found"></a>
+        <a href="homeLogin.jsp" id="logout">Logout</a>
+	</div>
+
+	<div class="container">
+		<img src="https://lynchlaw-group.com/wp-content/uploads/2017/05/sh8-5453-871.jpg" alt="Image Not Found">
+		<label>Name :</label>
+		<input type="text" class="name" name="name" placeholder="Name" required><br>
+		<label>Email :</label>
+		<input type="email" name="email" placeholder="Email" required><br>
+		<label>Queries (or) Suggestions :</label>
+		<textarea cols="102" rows="10" name="queries" placeholder="Queries (or) Suggestions" required></textarea><br>
 			
-			<a href="index.html"><input type="submit" value="submit"></a>
-		</div>
+		<a href="index.html"><input type="submit" value="submit"></a>
+	</div>
+	
 </body>
 </html>

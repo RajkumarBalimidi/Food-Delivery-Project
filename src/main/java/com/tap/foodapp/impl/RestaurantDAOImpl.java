@@ -23,7 +23,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	
 	
 	static ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
-	private static final String INSERT_RESTAURANT = "insert into restaurant(restaurant_name,address,isactive,cuisine_type,adminid,image_path) values(?,?,?,?,?,?)"; 
+	private static final String INSERT_RESTAURANT = "insert into restaurant(restaurant_name,address,isactive,cuisine_type,adminid) values(?,?,?,?,?)"; 
 	private static final String FETCH_ALL_RESTAURANTS = "select * from `restaurant`";
 	private static final String GET_RESTAURANT_BY_ID = "select * from restaurant where restaurant_id=?";
 	private static final String DELETE_RESTAURANT_BY_ID = "delete from restaurant where adminid=?";
@@ -60,7 +60,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 			pstmt.setBoolean(3, restaurant.getIsactive());
 			pstmt.setString(4, restaurant.getCuisinetype());
 			pstmt.setString(5, restaurant.getAdminid());
-			pstmt.setString(6, restaurant.getResImage());
 			
 			res = pstmt.executeUpdate();			
 		}
@@ -211,7 +210,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return res;
 	}
 	
 	

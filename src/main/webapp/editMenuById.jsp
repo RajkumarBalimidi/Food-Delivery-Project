@@ -97,7 +97,7 @@ input[type="submit"]:hover {
 		<input type="text" name="price" value="<%= m.getPrice() %>"><br>
 		<label>Description :</label>
 		<input type="text" name="description" value="<%= m.getDescription() %>"><br>
-		<label>Is Availabel :</label>
+		<label>Is Available :</label>
 		<input type="text" name="isavailable" value="<%= m.getIsavailable() %>"><br>
 		
 		<input type="submit" value="Update"><br>

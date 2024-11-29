@@ -24,10 +24,9 @@ public class CreateAdminAccount extends HttpServlet {
 		boolean isactive = Boolean.parseBoolean(req.getParameter("isactive"));
 		String address = req.getParameter("address");
 		String cuisinetype = req.getParameter("cuisinetype");
-		String imagePath = req.getParameter("resimagepath");
 		
 		RestaurantDAO rdao = new RestaurantDAOImpl();
-		Restaurant restaurant = new Restaurant(RestaurantName,address,isactive,cuisinetype,AdminEmail,imagePath);
+		Restaurant restaurant = new Restaurant(RestaurantName,address,isactive,cuisinetype,AdminEmail);
 		int status = rdao.insertRestaurant(restaurant);
 		if(status == 0)
 		{

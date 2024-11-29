@@ -12,6 +12,13 @@ public class Restaurant {
 	private String cuisinetype;
 	private String resImage;
 	
+
+	public String getResImage() {
+		return resImage;
+	}
+	public void setResImage(String resImage) {
+		this.resImage = resImage;
+	}
 	public int getResid() {
 		return resid;
 	}
@@ -60,16 +67,9 @@ public class Restaurant {
 	public void setCuisinetype(String cuisinetype) {
 		this.cuisinetype = cuisinetype;
 	}
-	public String getResImage() {
-		return resImage;
-	}
-	public void setResImage(String resImage) {
-		this.resImage = resImage;
-	}
 	
-	public Restaurant() {
-		super();
-	}
+	
+	
 	
 	public Restaurant(int resid, String resname, String address, float rating, boolean isactive, String adminid, String password, String cuisinetype, String resImage) {
 		super();
@@ -84,25 +84,23 @@ public class Restaurant {
 		this.resImage = resImage;
 	}
 	
-	public Restaurant(int resid, String resname, String address, boolean isactive, String adminid, String cuisinetype) {
+	public Restaurant(String resname2,String address, Boolean isactive2, String cuisinetype2, String adminid) {
 		super();
-		this.resid = resid;
-		this.resname = resname;
+		this.resname = resname2;
 		this.address = address;
-		this.isactive = isactive;
+		this.isactive = isactive2;
+		this.cuisinetype = cuisinetype2;
 		this.adminid = adminid;
-		this.cuisinetype = cuisinetype;
 	}
 	
 	
-	public Restaurant(String resname, String address, boolean isactive, String cuisinetype, String adminid, String resImage) {
+	public Restaurant(String resname, String address, boolean isactive, String cuisinetype, String adminid) {
 		super();
 		this.resname = resname;
 		this.address = address;
 		this.isactive = isactive;
 		this.adminid = adminid;
 		this.cuisinetype = cuisinetype;
-		this.resImage = resImage;
 	}
 	
 	public Restaurant(String resname, String address, boolean isactive, String cuisinetype) {

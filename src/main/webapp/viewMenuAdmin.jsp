@@ -65,8 +65,8 @@
         background-color: #ffffff;
         border: 1px solid #ddd;
         border-radius: 8px;
-        width: 250px;
-        padding: 20px;
+        width: 280px;
+        padding: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
         transition: transform 0.2s; /* Transition for hover effect */
@@ -76,8 +76,8 @@
     	transform: scale(1.02); /* Slightly enlarge card on hover */
 	}
     .card img {
-        height: 120px;
-        width: 180px;
+        height: 180px;
+        width: 250px;
         border-radius: 4px;
     }
     .card h2 {
@@ -146,7 +146,7 @@ if (r != null && menuList != null) {
     for (Menu m : menuList) {
 %>
         <div class="card">
-            <img src="" alt="Image Not Found">
+            <img src="<%= m.getItemImage() %>" alt="Image Not Found">
             <h5>Item ID : <%= m.getMenu_id() %></h5>
             <h4>Item Name : <%= m.getMenu_name() %></h4>
             <p class="price">₹<%= m.getPrice() %></p>

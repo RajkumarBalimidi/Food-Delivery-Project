@@ -18,7 +18,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: orange;
+    background-color: #ffff;
 }
 
 .menubar {
@@ -26,9 +26,12 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: #12ccf6; /* Light yellow background */
-    padding: 10px 20px; /* Padding around the items */
+    padding: 5px 0px; /* Padding around the items */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     height: 45px;
+     position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .menubar img {
@@ -52,6 +55,7 @@ body {
 .menubar .auth-links {
     display: flex; /* Flexbox for login and signup links */
     margin-left: 100px;
+    margin-right:50px;
 }
 
 .menubar .auth-links a {
@@ -83,6 +87,10 @@ body {
 .menubar a:hover {
     color: red; /* Change color on hover */
 }
+.menubar #logout{
+	margin-right:20px;
+}
+
 .menubar #logout:hover{
 	transition: 0.2s;
 	font-size: 13px;
@@ -99,13 +107,13 @@ body {
     display: flex; /* Flexbox layout */
     flex-wrap: wrap; /* Allow cards to wrap */
     gap: 20px; /* Space between cards */
-    margin-left : 70px;
+    margin-left : 50px;
 }
 
 #show {
     text-align: center; /* Center the heading */
     color: black; /* Set heading color to blue */
-    margin-top: 30px;
+    margin-top: 100px;
     background-color: rgba(39, 225, 10, 0.936);
     height:40px;
     width:300px;
@@ -118,6 +126,7 @@ body {
 /* Card Styles */
 
 .card {
+	
     background-color: #ffffff; /* White background for cards */
     border: 1px solid #ddd; /* Light gray border */
     border-radius: 8px; /* Rounded corners */
@@ -128,7 +137,7 @@ body {
     height: 400px; /* Fixed height for cards */
     overflow: hidden; /* Prevent overflow of text */
     padding-left: 10px;
-    margin-left: 45px;
+    margin-left: 35px;
     margin-bottom: 20px;
     text-align: center;
     
@@ -136,6 +145,7 @@ body {
 
 .card:hover {
     transform: scale(1.02); /* Slightly enlarge card on hover */
+    background : blur;
 }
 
 .card b {
@@ -160,6 +170,20 @@ body {
 	height: 45px;
 	width: 130px;
 }
+
+    /* Responsive styling for smaller screens */
+    @media (max-width: 768px) {
+        .order-card {
+            width: 45%; /* Two cards per row on small screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .order-card {
+            width: 100%; /* One card per row on very small screens */
+        }
+    }
+
 	
 	
 	</style>
@@ -175,10 +199,10 @@ body {
         <img src="https://static.vecteezy.com/system/resources/previews/018/867/174/non_2x/chili-pepper-on-fire-free-png.png" alt="Image Not Found">
         <a href="index.html" class="hc1">ABOUT US</a>
         <h2>Hi <%out.println(u.getName());%>! Welcome to the Restaurants</h2>
-        <a href="addToCart.jsp"><img src="https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-cart-icon-png-image_4292658.jpg" alt="Cart Not Found"></a>
+        <a href="addToCart.jsp?userEmail=<%= userId%>"><img src="https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-cart-icon-png-image_4292658.jpg" alt="Cart Not Found"></a>
         <a href="orderHistory.jsp?userEmail=<%= userId %>" style="text-decoration : none">Order History</a>
+        <a href="contactUs.html" class="hc">Contact us</a>
         <a href="profile.jsp" id="profile"><img src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png" alt="Image Not Found"></a>
-        <a href="#" class="hc">Contact us</a>
         <a href="homeLogin.jsp" id="logout">Logout</a>
     </div>
     
@@ -201,7 +225,7 @@ body {
         for (Restaurant r : restaurant) {
     %>
         <div class="card">
-        	<img src="" height="200px" width="300px"><br><br>
+        	<img src="<%= r.getResImage() %>" height="200px" width="100%"><br><br>
             <b>Restaurant ID :</b> <%= r.getResid() %><br>
             <b>Name :</b> <%= r.getResname() %><br>
             <b>Address :</b> <%= r.getAddress() %><br>
@@ -210,17 +234,20 @@ body {
             <b>Cuisine Type : </b><%= r.getCuisinetype() %><br><br>
             <a href="GetParticularRestaurantIdUser?Id=<%= r.getResid()%>"><button>View Menu</button></a>
         </div>
+        
     <%
         }
+    %>    
+      <script>
+        	alert("If you are a New User the Add To Cart of your first item will not be added (or) Displayed. Remind it as you are New User.")
+        </script>  
+    <%    
     } else {
         out.println("No Restaurants Found");
     }
     %>
 </div>
-    
-    
-    
-    
+
     <%}
 	else{
 		response.sendRedirect("homeLogin.jsp");

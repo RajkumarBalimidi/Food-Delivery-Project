@@ -4,85 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Registration</title>
-    <style>
-    	@charset "UTF-8";
-*{
+<style>
+    
+@charset "UTF-8";
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-#register{
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0px;
+}
+
+#image-container {
+    width: 50%;
+    text-align: center;
+    padding-right: 5%; /* 10% space in total when combined with the form's padding-left */
+    margin-left: 8%;
+    margin-top: 10px;
+}
+
+#image-container img {
+    width: 650px;
+    height: 520px;
+    max-width: 650px; /* Optional max width to keep the image manageable */
+    border-radius: 5px; /* Optional for a rounded look */
+}
+
+#register {
+    width: 30%; /* Remaining width after accounting for image and spacing */
     border: 2px solid black;
     border-radius: 5px;
-    height: 100%px;
-    width:400px;
     background-color: white;
     color: black;
-    margin-left: 450px;
-    margin-top: 25px;
-    
-}
-#register form{
-    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
 }
 
-#register h2{
+#register h2 {
     text-align: center;
     margin-bottom: 35px;
-    padding-top: 10px;
+    padding-top: 0px;
     color: white;
     background-color: blue;
     height: 50px;
+    line-height: 50px;
 }
-#register label{
-    text-align: center;
-    margin-left: 82px;
-    background-color: white;
+
+#register label {
+    display: block;
+    margin: 5px 0 5px 0;
 }
-#register input{
-    background-color: white;
-    margin-left: 80px;
-    margin-bottom: 18px;
-    width: 250px;
+
+#register input {
+    width: calc(100% - 20px);
     height: 30px;
     border-radius: 3px;
-}
-#register input[placeholder]{
+    margin-bottom: 10px;
     padding-left: 10px;
 }
-#register .submit{
+
+#register .submit {
     width: 120px;
     height: 30px;
-    margin-left: 150px;
-    margin-top: 15px;
+    margin: 15px auto 0 auto;
+    display: block;
     background-color: blue;
     color: white;
     font-size: medium;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
+
+#register .submit:hover {
+    background-color: darkblue;
+}
+
    	
 </style>    
 </head>
 <body>    
+    
     <div id="register">
         <h2>Create an Account</h2>
         <form action="Register">
-            <label>Full Name</label><br>
-            <input type="text" name="fullname" placeholder="Full Name" required><br>
-            <label>Email</label><br>
-            <input type="email" name="email" placeholder="Email id" required><br>
-            <label>Mobile Number</label><br>
-            <input type="text" name="mobilenumber" placeholder="Mobile number" required><br>
-            <label>Address</label><br>
-            <input type="text" name="address" placeholder="Address" required><br>
-            <label>Role</label><br>
-            <input type="text" name="role" placeholder="Enter your occupation" required><br><br>
-            
-            <input class="submit" type="submit" value="signup">
+            <label>Full Name</label>
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email id" required>
+            <label>Mobile Number</label>
+            <input type="text" name="mobilenumber" placeholder="Mobile number" required>
+            <label>Address</label>
+            <input type="text" name="address" placeholder="Address" required>
+            <label>Role</label>
+            <input type="text" name="role" placeholder="Enter your occupation" required>
+            <input class="submit" type="submit" value="Signup">
         </form>
-       
     </div>
-
+    <div id="image-container">
+        <img src="https://i.pinimg.com/originals/30/2b/f4/302bf441ba64906f1558c6665ee01aba.jpg" alt="Restaurant Image">
+    </div>
 </body>
 </html>

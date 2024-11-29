@@ -1,139 +1,283 @@
 <%@ page session="true" %>
-<%@ page import="com.tap.foodapp.impl.CartItemDAOImpl, com.tap.foodapp.model.CartItem,com.tap.foodapp.model.Menu" %>
+<%@ page import="java.util.List, com.tap.foodapp.impl.CartDAOImpl,com.tap.foodapp.dao.CartDAO,
+ com.tap.foodapp.model.Cart, com.tap.foodapp.model.Menu,
+ com.tap.foodapp.impl.MenuDAOImpl,com.tap.foodapp.dao.MenuDAO, com.tap.foodapp.model.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #f4f4f4, #e2e2e2);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .cart-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s, transform 0.3s;
-            margin-bottom: 20px; /* Space between cards */
-        }
-        .cart-card:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            transform: translateY(-5px);
-        }
-        .cart-card img {
-            max-width: 100%; /* Responsive image */
-            height: auto;
-            border-radius: 8px; /* Rounded image corners */
-        }
-        .cart-total {
-            font-size: 1.5em;
-            color: #333;
-        }
-        .cart-actions .btn {
-            text-decoration: none;
-            margin: 5px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .cart-actions .btn:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-        .checkout-btn {
-            background-color: #28a745; /* Green for checkout */
-        }
-        .checkout-btn:hover {
-            background-color: #218838;
-        }
-        /* Animation for empty cart message */
-        .empty-cart {
-            text-align: center;
-            font-size: 1.2em;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1s forwards; /* Fade in animation */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    <title>Cart Items</title>
+    
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0px;
+}
+
+.menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #12ccf6; /* Light yellow background */
+    padding: 5px 0px; /* Padding around the items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    height: 45px;
+     position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.menubar img {
+    height: 40px; /* Adjust height of logo */
+    width: 40px;
+    border-radius: 20px;
+    background-color: none;
+}
+
+.menubar h2 {
+    margin: 0;
+    color: #333; /* Dark text color */
+}
+
+.menubar a {
+    color: #333; /* Dark text color for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold font for links */
+}
+
+.menubar .auth-links {
+    display: flex; /* Flexbox for login and signup links */
+    margin-left: 100px;
+    margin-right:50px;
+}
+
+.menubar .auth-links a {
+	padding-left: 20px;
+    margin: 0; /* Remove margin for auth links */
+}
+
+.menubar .separator {
+    margin: 0 5px; /* Space around the separator */
+    color: #333; /* Dark text color for separator */
+}
+
+.menubar #profile {
+    padding-top: 0px;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 38px;
+    background-color: white;
+
+}
+.menubar .hc1{
+	font-size:15px;
+	margin-left: 20px;
+}
+
+.menubar .hc{
+	font-size:16px;
+}
+
+.menubar a:hover {
+    color: red; /* Change color on hover */
+}
+.menubar #logout{
+	margin-right: 20px;
+}
+
+.menubar #logout:hover{
+	transition: 0.2s;
+	font-size: 13px;
+}
+
+
+/* After menu bar page style*/
+
+/* Cart Container */
+.cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+    padding: 30px;
+    padding-top: 100px;
+}
+
+/* Individual Card */
+.cart-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    text-align: left;
+    padding: 20px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+/* Card Hover Effect */
+.cart-card:hover {
+    transform: scale(1.05);
+}
+
+/* Card Image */
+.cart-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Card Content */
+.cart-card .card-content {
+    padding: 10px 20px;
+    color: #333;
+}
+
+/* Labels and Inputs */
+.cart-card label {
+    font-weight: bold;
+    margin: 10px 0;
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.cart-card input[type="text"], 
+.cart-card input[type="number"] {
+    margin-bottom: 10px;
+    width: 45%;
+    height: 25px;
+    border-radius: 3px;
+    text-align: center;
+    float: right;
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+}
+
+/* Buttons */
+
+.cart-card .remove {
+    color: white;
+    background-color: green;
+    height: 35px;
+    width: 45px;
+    font-size: 10px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin: 0px;
+    margin-top: 150px;
+    margin-left: 0px;
+    padding: 5px;;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Remove Button */
+.cart-card .remove {
+    background-color: red;
+    margin-right: 100px;
+}
+.cart-card .order{
+    color: white;
+    background-color: green;
+    height: 35px;
+    width: 80px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin: 0px;
+    margin-top: 150px;
+    
+    text-align: left;
+    
+}
+/* Hover Effects */
+.cart-card .order:hover, 
+.cart-card .remove:hover {
+    background-color: blue;
+}
+
+/* Button Alignment: Side by Side */
+.cart-card .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+</style>
+    
 </head>
 <body>
-    <div class="container">
-        <h1>Your Cart</h1>
-        <%
-        	Menu menu=new Menu();
-            CartItem cart = (CartItem) session.getAttribute("cart");
-            if (cart != null && cart.getItems() != null && !cart.getItems().isEmpty()) {
-        %>
-        <div class="row">
-            <%
-                double total = 0;
-                for (CartItem item : cart.getItems().values()) {
-                    double itemTotal = item.getQuantity() * item.getPrice();
-                    total += itemTotal;
-            %>
-            <div class="col-md-4">
-                <div class="cart-card">
-                    <h3><%= item.getMenuName() %></h3>
-                    <p class="price">Price: Rs <%= String.format("%.2f", item.getPrice()) %></p>
-                    <p class="total">Total: Rs <%= String.format("%.2f", itemTotal) %></p>
-                    <form action="Cart" method="post" style="display:inline-block;">
-                        <input type="hidden" name="itemId" value="<%= item.getMenuId() %>">
-                        <input type="number" name="quantity" value="<%= item.getQuantity() %>" min="1" class="form-control" style="width: 100px; display: inline-block;">
-                        <input type="hidden" name="act" value="update">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
-                    <form action="Cart" method="post" style="display:inline-block;">
-                        <input type="hidden" name="itemId" value="<%= item.getMenuId() %>">
-                        <input type="hidden" name="act" value="remove">
-                        <button type="submit" class="btn btn-danger">Remove</button>
-                    </form>
-                </div>
-            </div>
-            <% } %>
-        </div>
-        <div class="cart-total text-right">
-            <h3>Total: Rs <%= String.format("%.2f", total) %></h3>
-        </div>
-        <%
-            } else {
-        %>
-        <p class="empty-cart">Your cart is empty. Start shopping now!</p>
-        <%
-            }
-        %>
-        <div class="cart-actions text-center">
-            <a href="menu.jsp" class="btn btn-secondary">Continue Shopping</a>
-            <a href="checkout.jsp" class="btn checkout-btn">Proceed to Checkout</a>
+   <%
+   		User user = (User) session.getAttribute("user");
+		String userEmail = request.getParameter("userEmail");
+        CartDAO cdao = new CartDAOImpl();
+        List<Cart> cartList = (List<Cart>) cdao.getCartByUserId(userEmail);
+        
+        session.setAttribute("user", user);
+        session.setAttribute("userid", userEmail);
+   %>
+<div class="menubar">
+        <a href="homeUser.jsp" class="hc1">Home</a>
+        <h2>Your Cart Items</h2>
+        <a href="addToCart.jsp?userEmail=<%= userEmail%>"><img src="https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-cart-icon-png-image_4292658.jpg" alt="Cart Not Found"></a>
+        <a href="orderHistory.jsp?userEmail=<%= userEmail %>" style="text-decoration : none">Order History</a>
+        <a href="profile.jsp" id="profile"><img src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png" alt="Image Not Found"></a>
+        <a href="homeLogin.jsp" id="logout">Logout</a>
+</div>
+<div class="cart-container">
+   <%
+   	for(Cart c : cartList) {
+            int menuId = c.getMenuId();
+            MenuDAO mdao = new MenuDAOImpl();
+            Menu mid = mdao.getMenuById(menuId);
+            
+    %>
+    <div class="cart-card">
+        <img src="<%= mid.getItemImage() %>" alt="Menu Item">
+        <div class="card-content">
+        <form action="OrderItemByMenuID" method="post">
+            <label>Cart ID : </label>
+            <input type="text" name="cartId" value="<%out.println(c.getCartId()); %>" readonly><br>
+        
+            <label>Menu ID : </label>
+            <input type="text" name="menuid" value="<%out.println(c.getMenuId()); %>" readonly><br>
+            <label>Menu Name : </label>
+            <input type="text" name="menuName" value="<%out.println(c.getMenuName()); %>" readonly><br>
+            <label>Price(For 1 Item) : </label>
+            <input type="text" value="<%out.println(c.getPrice()); %>" readonly><br>
+            <label>Quantity : </label>
+            <input type="number" name="quantity" value="<%= c.getQuantity() %>" min="1"><br>
+           
+		     <div class="button-container">
+		    	<a href="RemoveCartItem?cid=<%= c.getCartId() %>">
+		        <input class="remove" type="button" value="Remove">
+		    	</a>
+		    	<input class="order" type="submit" value="Order">
+			</div>
+
+        </form> 
+            
         </div>
     </div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+   <%
+   	} 
+   %>
+</div>
+
 </body>
 </html>
