@@ -121,7 +121,7 @@
         border: 1px solid white;
         transition: transform 0.3s;
         margin-bottom :10px;
-        margin-left :25px;
+        margin-left :50px;
         
     }
     

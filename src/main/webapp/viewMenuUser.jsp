@@ -115,7 +115,7 @@
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
-        margin-left: 8px;
+        margin-left: 50px;
    		transition: transform 0.2s; /* Transition for hover effect */
     }
     .card:hover {
