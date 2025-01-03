@@ -2,7 +2,8 @@
 
 This is a convenient and user-friendly Food Delivery app that allows users to order food from a variety of restaurants with ease.
 
-## Features
+
+## Features :-
 
 Sign Up / Login: Sign up or log in to your account.
 
@@ -19,7 +20,8 @@ Secure Ordering: Password encryption ensures the security of user information du
 Future Enhancements: Integration of secure payment options and additional features such as real-time order tracking and loyalty programs are planned for future updates.
 
 
-### Technologies Used
+
+### Technologies Used :-
 Hyper Text Markup Language (HTML),
 
 Cascading Style Sheets (CSS),
@@ -34,4 +36,8 @@ MySQL database,
 
 Tomcat Server
 
+
+
 ### Video :-
+
+https://github.com/user-attachments/assets/5aef3d88-02e9-4b4d-8b45-842bc51ad0ba
